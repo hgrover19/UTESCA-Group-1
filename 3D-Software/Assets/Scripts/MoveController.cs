@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using NameSpaceCopyPaste;
 
 public class MoveController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class MoveController : MonoBehaviour
 	[Range(1f, 100f)]
 	public float moveSpeed = 70f;
 	public int status = 0;
+	CopyPaste copyPaste = new CopyPaste();
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,7 @@ public class MoveController : MonoBehaviour
 
 
 		if(selectedObject != null) {
+			// Moving the Object
 			if (status == 0)
 			{
 				PositionModifier();
@@ -63,6 +66,17 @@ public class MoveController : MonoBehaviour
 			{
 				ScaleModifier();
 			}
+
+			// Copy and Paste
+			if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyUp(KeyCode.C))
+			{
+				copyPaste.CopyObject(selectedObject);
+			}
+			if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyUp(KeyCode.V))
+			{
+				copyPaste.PasteObject();
+			}
+			
 		}
     }
 
