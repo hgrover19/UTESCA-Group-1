@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
 {
-    [AddComponentMenu("UI/Selectable", 35)]
+    [AddComponentMenu("UI/Selectable", 70)]
     [ExecuteAlways]
     [SelectionBase]
     [DisallowMultipleComponent]
@@ -29,7 +29,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -45,8 +44,7 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public static Selectable[] allSelectablesArray
         {
@@ -86,7 +84,6 @@ namespace UnityEngine.UI
         /// <returns>The number of element copied.</returns>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -109,8 +106,7 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public static int AllSelectablesNoAlloc(Selectable[] selectables)
         {
@@ -190,7 +186,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -205,8 +200,7 @@ namespace UnityEngine.UI
         ///         button.navigation = Navigation.defaultNavigation;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public Navigation        navigation        { get { return m_Navigation; } set { if (SetPropertyUtility.SetStruct(ref m_Navigation, value))        OnSetProperty(); } }
 
@@ -215,7 +209,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -230,8 +223,7 @@ namespace UnityEngine.UI
         ///         btnMain.transition = Selectable.Transition.ColorTint;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public Transition        transition        { get { return m_Transition; } set { if (SetPropertyUtility.SetStruct(ref m_Transition, value))        OnSetProperty(); } }
 
@@ -243,7 +235,6 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -258,8 +249,7 @@ namespace UnityEngine.UI
         ///         button.colors = ColorBlock.defaultColorBlock;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public ColorBlock        colors            { get { return m_Colors; } set { if (SetPropertyUtility.SetStruct(ref m_Colors, value))            OnSetProperty(); } }
 
@@ -270,28 +260,26 @@ namespace UnityEngine.UI
         /// Modifications will not be visible if transition is not SpriteSwap.
         /// </remarks>
         /// <example>
-        /// <code>
-        /// <![CDATA[
-        /// using UnityEngine;
-        /// using System.Collections;
-        /// using UnityEngine.UI; // Required when Using UI elements.
-        ///
-        /// public class ExampleClass : MonoBehaviour
-        /// {
-        ///     //Creates an instance of a sprite state (This includes the highlighted, pressed and disabled sprite.
-        ///     public SpriteState sprState = new SpriteState();
-        ///     public Button btnMain;
-        ///
-        ///
-        ///     void Start()
-        ///     {
-        ///         //Assigns the new sprite states to the button.
-        ///         btnMain.spriteState = sprState;
-        ///     }
-        /// }
-        /// ]]>
-        /// </code>
-        /// </example>
+        // <code>
+        // using UnityEngine;
+        // using System.Collections;
+        // using UnityEngine.UI; // Required when Using UI elements.
+        //
+        // public class ExampleClass : MonoBehaviour
+        // {
+        //     //Creates an instance of a sprite state (This includes the highlighted, pressed and disabled sprite.
+        //     public SpriteState sprState = new SpriteState();
+        //     public Button btnMain;
+        //
+        //
+        //     void Start()
+        //     {
+        //         //Assigns the new sprite states to the button.
+        //         btnMain.spriteState = sprState;
+        //     }
+        // }
+        // </code>
+        // </example>
         public SpriteState       spriteState       { get { return m_SpriteState; } set { if (SetPropertyUtility.SetStruct(ref m_SpriteState, value))       OnSetProperty(); } }
 
         /// <summary>
@@ -307,7 +295,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -323,8 +310,7 @@ namespace UnityEngine.UI
         ///         btnMain.targetGraphic = newImage;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public Graphic           targetGraphic     { get { return m_TargetGraphic; } set { if (SetPropertyUtility.SetClass(ref m_TargetGraphic, value))     OnSetProperty(); } }
 
@@ -333,7 +319,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -354,8 +339,7 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public bool              interactable
         {
@@ -392,7 +376,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // Required when Using UI elements.
@@ -408,8 +391,7 @@ namespace UnityEngine.UI
         ///         buttonAnimator = button.animator;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
 #if PACKAGE_ANIMATION
         public Animator animator
@@ -427,40 +409,34 @@ namespace UnityEngine.UI
         private readonly List<CanvasGroup> m_CanvasGroupCache = new List<CanvasGroup>();
         protected override void OnCanvasGroupChanged()
         {
-            // Figure out if parent groups allow interaction
-            // If no interaction is alowed... then we need
-            // to not do that :)
-            var groupAllowInteraction = true;
+            var parentGroupAllowsInteraction = ParentGroupAllowsInteraction();
+
+            if (parentGroupAllowsInteraction != m_GroupsAllowInteraction)
+            {
+                m_GroupsAllowInteraction = parentGroupAllowsInteraction;
+                OnSetProperty();
+            }
+        }
+
+        bool ParentGroupAllowsInteraction()
+        {
             Transform t = transform;
             while (t != null)
             {
                 t.GetComponents(m_CanvasGroupCache);
-                bool shouldBreak = false;
                 for (var i = 0; i < m_CanvasGroupCache.Count; i++)
                 {
-                    // if the parent group does not allow interaction
-                    // we need to break
                     if (m_CanvasGroupCache[i].enabled && !m_CanvasGroupCache[i].interactable)
-                    {
-                        groupAllowInteraction = false;
-                        shouldBreak = true;
-                    }
-                    // if this is a 'fresh' group, then break
-                    // as we should not consider parents
+                        return false;
+
                     if (m_CanvasGroupCache[i].ignoreParentGroups)
-                        shouldBreak = true;
+                        return true;
                 }
-                if (shouldBreak)
-                    break;
 
                 t = t.parent;
             }
 
-            if (groupAllowInteraction != m_GroupsAllowInteraction)
-            {
-                m_GroupsAllowInteraction = groupAllowInteraction;
-                OnSetProperty();
-            }
+            return true;
         }
 
         /// <summary>
@@ -468,7 +444,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -485,8 +460,7 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual bool IsInteractable()
         {
@@ -524,6 +498,7 @@ namespace UnityEngine.UI
             s_Selectables[m_CurrentIndex] = this;
             s_SelectableCount++;
             isPointerDown = false;
+            m_GroupsAllowInteraction = ParentGroupAllowsInteraction();
             DoStateTransition(currentSelectionState, true);
 
             m_EnableCalled = true;
@@ -569,14 +544,6 @@ namespace UnityEngine.UI
             base.OnDisable();
 
             m_EnableCalled = false;
-        }
-
-        void OnApplicationFocus(bool hasFocus)
-        {
-            if (!hasFocus && IsPressed())
-            {
-                InstantClearState();
-            }
         }
 
 #if UNITY_EDITOR
@@ -757,7 +724,6 @@ namespace UnityEngine.UI
         /// <returns>The neighbouring Selectable object. Null if none found.</returns>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -776,8 +742,7 @@ namespace UnityEngine.UI
         ///         Debug.Log(newSelectable.name);
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public Selectable FindSelectable(Vector3 dir)
         {
@@ -887,7 +852,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -905,8 +869,7 @@ namespace UnityEngine.UI
         ///         secondButton.interactable = false;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual Selectable FindSelectableOnLeft()
         {
@@ -926,7 +889,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -944,8 +906,7 @@ namespace UnityEngine.UI
         ///         secondButton.interactable = false;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual Selectable FindSelectableOnRight()
         {
@@ -965,7 +926,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -983,8 +943,7 @@ namespace UnityEngine.UI
         ///         secondButton.interactable = false;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual Selectable FindSelectableOnUp()
         {
@@ -1004,7 +963,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -1022,8 +980,7 @@ namespace UnityEngine.UI
         ///         secondButton.interactable = false;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual Selectable FindSelectableOnDown()
         {
@@ -1043,7 +1000,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -1062,8 +1018,7 @@ namespace UnityEngine.UI
         ///         Debug.Log(moveDir + ", " + moveVector);
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual void OnMove(AxisEventData eventData)
         {
@@ -1127,7 +1082,6 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// //Create a UI element. To do this go to Create>UI and select from the list. Attach this script to the UI GameObject to see this script working. The script also works with non-UI elements, but highlighting works better with UI.
         ///
         /// using UnityEngine;
@@ -1151,8 +1105,7 @@ namespace UnityEngine.UI
         ///         }
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         protected bool IsHighlighted()
         {
@@ -1185,7 +1138,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -1199,8 +1151,7 @@ namespace UnityEngine.UI
         ///         Debug.Log(this.gameObject.name + " Was Clicked.");
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual void OnPointerDown(PointerEventData eventData)
         {
@@ -1220,7 +1171,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -1239,8 +1189,7 @@ namespace UnityEngine.UI
         ///         Debug.Log("The mouse click was released");
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual void OnPointerUp(PointerEventData eventData)
         {
@@ -1257,7 +1206,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -1271,8 +1219,7 @@ namespace UnityEngine.UI
         ///         Debug.Log("The cursor entered the selectable UI element.");
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
@@ -1285,7 +1232,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -1299,8 +1245,7 @@ namespace UnityEngine.UI
         ///         Debug.Log("The cursor exited the selectable UI element.");
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual void OnPointerExit(PointerEventData eventData)
         {
@@ -1313,7 +1258,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -1327,8 +1271,7 @@ namespace UnityEngine.UI
         ///         Debug.Log(this.gameObject.name + " was selected");
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual void OnSelect(BaseEventData eventData)
         {
@@ -1341,7 +1284,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI;
@@ -1354,8 +1296,7 @@ namespace UnityEngine.UI
         ///         Debug.Log("Deselected");
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual void OnDeselect(BaseEventData eventData)
         {
@@ -1368,7 +1309,6 @@ namespace UnityEngine.UI
         /// </summary>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// using UnityEngine;
         /// using System.Collections;
         /// using UnityEngine.UI; // required when using UI elements in scripts
@@ -1385,8 +1325,7 @@ namespace UnityEngine.UI
         ///         myInputField.Select();
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public virtual void Select()
         {
