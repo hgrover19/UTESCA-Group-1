@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class CameraController : MonoBehaviour
 {   
@@ -9,13 +11,18 @@ public class CameraController : MonoBehaviour
     private float rotationSpeed = 500.0f;
     private Vector3 mouseWorldPosStart;
     private float zoomScale = 5.0f;
-    private float maxFieldOfView = 160.0f;
-    private float minFieldOfView = 0.0f;
+    public float minZoomDistance = 1.0f;
+    public float maxZoomDistance = 500.0f;
     private float defaultFieldOfView = 60.0f;
+    public float zoomSpeed = 50.0f;
+    public MoveController moveController;
+    
 
     // Start is called before the first frame update
     void Start()
-    {}
+    {
+
+    }
 
 
     // Update is called once per frame
@@ -41,6 +48,10 @@ public class CameraController : MonoBehaviour
 
         Zoom(Input.GetAxis("Mouse ScrollWheel"));
 
+        if (moveController.selectedObject != null)
+        {
+            
+        }
 
     }
 
@@ -91,11 +102,12 @@ public class CameraController : MonoBehaviour
     {
         if(zoomDiff != 0)
         {   
-            // mouseWorldPosStart = GetPerspectivePos();
-            // Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - zoomDiff * zoomScale, minFieldOfView, maxFieldOfView);
-            // Vector3 mouseWorldPosDiff = mouseWorldPosStart - GetPerspectivePos();
-            // transform.position += mouseWorldPosDiff * zoomDiff;
-            transform.Translate(transform.position * zoomDiff);
+            
+            Vector3 zoomDirection = transform.forward;
+            transform.position += zoomDirection * zoomDiff * zoomSpeed;
+            float clampedDistance = Mathf.Clamp(transform.position.magnitude, minZoomDistance, maxZoomDistance);
+            transform.position = transform.position.normalized * clampedDistance;
+            
         }
     }
 
@@ -106,5 +118,59 @@ public class CameraController : MonoBehaviour
         float dist;
         plane.Raycast(ray, out dist);
         return ray.GetPoint(dist);
+    }
+
+    public void HandleInputData(int val)
+    {
+       if (moveController.selectedObject != null)
+       {
+        CameraView(val, moveController.selectedObject);
+       }
+    }
+
+    public void CameraView(int view, GameObject selectedObject)
+    {
+        Renderer renderer = selectedObject.GetComponent<Renderer>();
+        Bounds bounds = renderer.bounds;
+        float width = bounds.size.x;
+        float height = bounds.size.y;
+        float depth = bounds.size.z;
+
+        if (view == 0) // Top View
+        {
+            transform.position =  selectedObject.transform.position + new Vector3(0, height/2 + 150, 0);
+            transform.LookAt(new Vector3(1,0,0));
+        }
+
+        else if (view == 1) // Bottom View
+        {
+            transform.position =  selectedObject.transform.position + new Vector3(0, -height/2 - 150, 0);
+            transform.LookAt(new Vector3(1,0,0));
+        }
+
+        else if (view == 2) // Left View
+        {
+            transform.position =  selectedObject.transform.position + new Vector3(-width/2 - 150, 0, 0);
+            transform.LookAt(new Vector3(0,0,1));
+        }
+
+        else if (view == 3) // Right View
+        {
+            transform.position =  selectedObject.transform.position + new Vector3(width/2 + 150, 0, 0);
+            transform.LookAt(new Vector3(0,0,1));
+        }
+
+        else if (view == 4) // Front View
+        {
+            transform.position =  selectedObject.transform.position + new Vector3(0, 0, depth/2 + 150);
+            transform.LookAt(new Vector3(0,1,0));
+        }
+
+        else if (view == 5) // Back View
+        {
+            transform.position =  selectedObject.transform.position + new Vector3(0, 0, -depth/2 - 150);
+            transform.LookAt(new Vector3(0,1,0));
+        }
+        
     }
 }

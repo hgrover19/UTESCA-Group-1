@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MoveController : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class MoveController : MonoBehaviour
 	float dirx, diry, dirz;
 	[Range(1f, 100f)]
 	public float moveSpeed = 70f;
+	public int status = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -18,30 +21,48 @@ public class MoveController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
-        
-		RaycastHit hitInfo;
-		
-		if( Physics.Raycast( ray, out hitInfo ) & Input.GetMouseButtonDown(0)) {
-			Debug.Log("Mouse is over: " + hitInfo.collider.name );
 
-			// The collider we hit may not be the "root" of the object
-			// You can grab the most "root-est" gameobject using
-			// transform.root, though if your objects are nested within
-			// a larger parent GameObject (like "All Units") then this might
-			// not work.  An alternative is to move up the transform.parent
-			// hierarchy until you find something with a particular component.
+		if (Input.GetMouseButtonDown(0))
+        {
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
 
-			GameObject hitObject = hitInfo.transform.root.gameObject;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    GameObject hitObject = hit.collider.gameObject;
 
-			SelectObject(hitObject);
-		}
-		else if(!Physics.Raycast( ray, out hitInfo ) & Input.GetMouseButtonDown(0)){
-			ClearSelection();
-		}
+                    if (hitObject.GetComponent<RectTransform>() == null && hitObject.name != "Plane")
+                    {
+                        SelectObject(hitObject);
+                    }
+                    else
+                    {
+                        Debug.Log("UI Element selected: " + hitObject.name);
+                    }
+                }
+                else
+                {
+                    ClearSelection();
+                }
+            }
+        }
+
 
 		if(selectedObject != null) {
-			PositionModifier();
+			if (status == 0)
+			{
+				PositionModifier();
+			}
+			else if (status == 1)
+			{
+				RotationModifier();
+			}
+			else if (status == 2)
+			{
+				ScaleModifier();
+			}
 		}
     }
 
@@ -91,5 +112,49 @@ public class MoveController : MonoBehaviour
 		}
 		selectedObject.transform.position += new Vector3(dirx, diry, dirz);
 		dirz = 0f;
+	}
+
+	void RotationModifier() {
+		dirx = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+		diry = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+		if (Input.GetKey(KeyCode.E)){
+			dirz = moveSpeed * Time.deltaTime;
+		}
+		else if(Input.GetKey(KeyCode.Q)){
+			dirz = -moveSpeed * Time.deltaTime;
+		}
+		selectedObject.transform.Rotate(dirx, diry, dirz);
+		dirz = 0f;
+	}
+
+	void ScaleModifier() {
+		dirx = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+		diry = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+		if (Input.GetKey(KeyCode.E)){
+			dirz = moveSpeed * Time.deltaTime;
+		}
+		else if(Input.GetKey(KeyCode.Q)){
+			dirz = -moveSpeed * Time.deltaTime;
+		}
+		selectedObject.transform.localScale += new Vector3(dirx, diry, dirz);
+		dirz = 0f;
+	}
+
+	public void HandleInputDataObjectController(int val)
+	{
+		status = val;
+		Debug.Log("Status: " + status);
+	}
+
+	public void ResetOrigin()
+	{
+		if (selectedObject == null)
+		{
+			return;
+		}
+			
+		selectedObject.transform.position = new Vector3(0, 77, 0);
+		selectedObject.transform.rotation = Quaternion.identity;
+		selectedObject.transform.localScale = new Vector3(1, 1, 1);
 	}
 }   
